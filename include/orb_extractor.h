@@ -1,8 +1,8 @@
 #ifndef OPENVSLAM_FEATURE_ORB_EXTRACTOR_H
 #define OPENVSLAM_FEATURE_ORB_EXTRACTOR_H
 
-#include "openvslam/feature/orb_params.h"
-#include "openvslam/feature/orb_extractor_node.h"
+#include "orb_params.h"
+#include "orb_extractor_node.h"
 
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/types.hpp>
