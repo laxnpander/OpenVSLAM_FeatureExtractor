@@ -1,4 +1,4 @@
-#include "openvslam/feature/orb_params.h"
+#include "orb_params.h"
 
 #include <iostream>
 

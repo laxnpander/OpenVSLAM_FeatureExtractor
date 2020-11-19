@@ -1,4 +1,4 @@
-#include "openvslam/feature/orb_extractor_node.h"
+#include "orb_extractor_node.h"
 
 namespace openvslam {
 namespace feature {
