@@ -12,3 +12,18 @@ cmake -DBUILD_TESTS=ON ..
 make -j4
 sudo make install
 ```
+
+## Example Usage
+
+In CMakeLists.txt of your project use:
+
+```
+cmake_minimum_required(VERSION 3.9)
+
+project(test)
+
+find_package(ORBFeatureExtractor REQUIRED)
+
+add_executable(test_bin test.cpp)
+target_link_libraries(test_bin ORBFeatureExtractor)
+```

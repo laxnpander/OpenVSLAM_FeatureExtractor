@@ -7,7 +7,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/features2d.hpp>
 #include <opencv2/highgui.hpp>
-#include <orb_feature_extractor/orb_extractor.h>
+#include <orb_extractor.h>
 
 TEST(OrbFeatureExtractor, Basic)
 {

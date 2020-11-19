@@ -4,7 +4,7 @@ project(ORBFeatureExtractor)
 
 set(ORBFeatureExtractor_VERSION "1.0.0")
 
-set(LIBRARY_NAME orb_feature_extractor)
+set(LIBRARY_NAME ORBFeatureExtractor)
 
 
 ################################################################################
@@ -84,10 +84,10 @@ include_directories(
 )
 
 set(HEADERS
-        include/orb_feature_extractor/orb_extractor.h
-        include/orb_feature_extractor/orb_extractor_node.h
-        include/orb_feature_extractor/orb_params.h
-        include/orb_feature_extractor/orb_point_pairs.h
+        include/orb_extractor.h
+        include/orb_extractor_node.h
+        include/orb_params.h
+        include/orb_point_pairs.h
 )
 
 set(SOURCES
@@ -127,13 +127,10 @@ install(TARGETS ${LIBRARY_NAME} EXPORT ORBFeatureExtractorTargets
       FRAMEWORK     DESTINATION ${ORBFeatureExtractor_FRAMEWORK_INSTALL_DIR}
       )
 
-# Headers
+ # Headers
 install(
-      DIRECTORY include/${LIBRARY_NAME}
-      DESTINATION ${ORBFeatureExtractor_INC_INSTALL_DIR}
-      FILES_MATCHING
-      PATTERN "*.h"
-      PATTERN "*.hpp"
+     FILES ${HEADERS}
+     DESTINATION ${ORBFeatureExtractor_INC_INSTALL_DIR}
 )
 
 ################################################################################
