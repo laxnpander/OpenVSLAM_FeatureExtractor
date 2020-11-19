@@ -13,7 +13,7 @@ make -j4
 sudo make install
 ```
 
-## Example Usage
+## Example Integration
 
 In CMakeLists.txt of your project use:
 
@@ -26,4 +26,17 @@ find_package(ORBFeatureExtractor REQUIRED)
 
 add_executable(test_bin test.cpp)
 target_link_libraries(test_bin ORBFeatureExtractor)
+```
+
+## Example Usage
+
+```
+openvslam::feature::orb_extractor extractor(3000, 1.2, 8, 15, 3);
+
+cv::Mat img = cv::imread("image.jpg");
+
+cv::Mat descriptor;
+std::vector<cv::KeyPoint> features;
+
+extractor.extract(img, cv::Mat(), features, descriptor);
 ```
