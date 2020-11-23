@@ -23,7 +23,7 @@ TEST(OrbFeatureExtractor, Basic)
   cv::Mat img_features;
   cv::drawKeypoints(img, features, img_features);
 
-  cv::namedWindow("Features", CV_WINDOW_NORMAL);
+  cv::namedWindow("Features", cv::WINDOW_NORMAL);
   cv::imshow("Features", img_features);
   cv::waitKey(0);
 }
