@@ -43,3 +43,7 @@ cmake-build-debug
 
 *.egg-info
 *.so
+
+##notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
