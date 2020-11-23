@@ -60,7 +60,7 @@ import cvMat
 import numpy as np
 import cv2
 
-## get Keypoints x,y as numpy array for input image
+## get keypoint coordinates x,y as numpy array for input image
 img = cv2.imread("image.jpg")
 kparray = cvMat.Kmat(img, 3000, 1.2, 8, 15, 3).astype('uint8')
 
