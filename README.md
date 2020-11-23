@@ -2,7 +2,10 @@
 
 Simple Python Bindings for OpenVSLAM_FeatureExtractor using pybind11 and cmake
 
-Prerequisites:
+Note:
+Clone the repo with git clone --recursive to include pybind11 submodule
+
+# Prerequisites:
 
 Python Environment: python >=3.6, Open CV python package, numpy
 
@@ -11,6 +14,7 @@ For Cmake:
 Open CV >= 4.0.0 Installation
 
 yaml-cpp
+
 
 ## 1. Build & install OpenVSLAM_Feature Extractor
 
@@ -54,10 +58,7 @@ pip install .
 ```{python}
 import cvMat
 import numpy as np
-import matplotlib.pyplot as plt
-import imageio
 import cv2
-%matplotlib inline
 
 ## get Keypoints x,y as numpy array for input image
 img = cv2.imread("image.jpg")
@@ -77,5 +78,5 @@ Code tested with OS X 10.15, python=3.6, Open CV 4.4.0
 Python Bindings Code adapted from:
 
 https://github.com/mpascucci/pybind_opencvMat
-and 
+and
 https://github.com/edmBernard/pybind11_opencv_numpy
