@@ -1,11 +1,24 @@
-# OpenVSLAM_FeatureExtractor
+# OpenVSLAM_FeatureExtractor Python Bindings
 
-Standalone ORB detector implementation copied from https://github.com/xdspacelab/openvslam ,but installable with cmake.
+Simple Python Bindings for OpenVSLAM_FeatureExtractor using pybind11 and cmake
 
-## Build & install
+Note:
+Clone the repo with git clone --recursive to include pybind11 submodule
+
+# Prerequisites:
+
+Python Environment: python >=3.6, Open CV python package, numpy
+
+For Cmake:
+
+Open CV >= 4.0.0 Installation
+
+yaml-cpp
+
+
+## 1. Build & install OpenVSLAM_Feature Extractor
 
 ```
-git clone https://github.com/laxnpander/OpenVSLAM_FeatureExtractor.git
 cd OpenVSLAM_FeatureExtractor
 mkdir build && cd build
 cmake -DBUILD_TESTS=ON ..
@@ -13,30 +26,57 @@ make -j4
 sudo make install
 ```
 
-## Example Integration
+## 2. Edit python_bindings/CMakeLists.txt
 
-In CMakeLists.txt of your project use:
+Edit Python Path sections
 
 ```
-cmake_minimum_required(VERSION 3.9)
+# set path to your python environment and numpy headers
+set(PYTHON_EXECUTABLE "/opt/anaconda3/envs/slambind/bin/python")
+set(PYTHON_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS} /opt/anaconda3/envs/slambind/lib/python3.6/site-packages/numpy/core/include)
 
-project(test)
+...
 
-find_package(ORBFeatureExtractor REQUIRED)
+# set path to PythonLibs
+find_package(PythonLibs 3 PATHS /opt/anaconda3/envs/slambind/)
 
-add_executable(test_bin test.cpp)
-target_link_libraries(test_bin ORBFeatureExtractor)
+...
+
+```
+## 3. Install Python Bindings with pip
+
+activate python environment and install package
+
+```
+cd python_bindings
+pip install .
+
 ```
 
 ## Example Usage
 
+```{python}
+import cvMat
+import numpy as np
+import cv2
+
+## get keypoint coordinates x,y as numpy array for input image
+img = cv2.imread("image.jpg")
+kparray = cvMat.Kmat(img, 3000, 1.2, 8, 15, 3).astype('uint8')
+
 ```
-openvslam::feature::orb_extractor extractor(3000, 1.2, 8, 15, 3);
 
-cv::Mat img = cv::imread("image.jpg");
-
-cv::Mat descriptor;
-std::vector<cv::KeyPoint> features;
-
-extractor.extract(img, cv::Mat(), features, descriptor);
 ```
+#Function arguments
+cvMat.Kmat(img: numpy.ndarray, max_num_keyp: int, scale_factor: float, num_levels: int, ini_fast_thr: int, min_fast_thr: int)
+```
+
+see jupyter notebook in python_bindings folder for example usage
+
+Code tested with OS X 10.15, python=3.6, Open CV 4.4.0
+
+Python Bindings Code adapted from:
+
+https://github.com/mpascucci/pybind_opencvMat
+and
+https://github.com/edmBernard/pybind11_opencv_numpy
